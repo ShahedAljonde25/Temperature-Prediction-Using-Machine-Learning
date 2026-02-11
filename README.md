@@ -105,3 +105,65 @@ This project is intended for academic and educational purposes.
 
 
 **XGBoost achieved the best performance** with the lowest error and highest accuracy.
+
+Model Deployment with FastAPI
+
+To make the model accessible and usable in real-time applications, the best-performing model (XGBoost) was deployed using FastAPI.
+
+FastAPI allows us to:
+
+Build a high-performance REST API
+
+Send climate data as JSON input
+
+Receive temperature predictions instantly
+
+Integrate the model into web or mobile applications
+
+📌 API Endpoint
+POST /weather_predict
+
+This endpoint accepts climate variables in JSON format and returns the predicted average temperature.
+
+Example Request (JSON)
+{
+  "AWND": 5.2,
+  "PGTM": 1200,
+  "PRCP": 0.0,
+  "SNOW": 0.0,
+  "SNWD": 0.0,
+  "TMAX": 28.5,
+  "TMIN": 20.1,
+  "WDF5": 180,
+  "WSF5": 12.0,
+  "U_Component": -5.6,
+  "V_Component": 0.0
+}
+
+Example Response
+{
+  "predicted_temperature": 24.3
+}
+
+🛠 How to Run the API Locally
+1️⃣ Install Dependencies
+pip install fastapi uvicorn xgboost scikit-learn numpy pandas
+
+2️⃣ Run the Server
+uvicorn weather_modiling:app --reload
+
+3️⃣ Open Interactive Docs
+http://127.0.0.1:8000/docs
+
+
+FastAPI automatically generates interactive API documentation.
+
+🏗 Project Structure
+weather_prediction/
+│
+├── weather_modiling.py
+├── weather_prediction.sav
+├── dataset.csv
+└── README.md
+
+
